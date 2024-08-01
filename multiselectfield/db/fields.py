@@ -43,7 +43,7 @@ class MultiSelectField(models.CharField):
     def __init__(self, *args, db_collation=None, **kwargs):
         self.min_choices = kwargs.pop('min_choices', None)
         self.max_choices = kwargs.pop('max_choices', None)
-        super(models.CharField).__init__(*args, **kwargs)
+        super(models.CharField, self).__init__(*args, **kwargs)
         self.db_collation = db_collation
         self.max_length = get_max_length(self.choices, self.max_length)
         self.validators.append(MaxValueMultiFieldValidator(self.max_length))
